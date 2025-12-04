@@ -1,0 +1,17 @@
+name: Artifact Demo
+
+on: [push]
+
+jobs:
+  artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Crear archivo
+        run: |
+          echo "Contenido del archivo" > demo.txt
+
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-file
+          path: demo.txt

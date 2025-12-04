@@ -1,0 +1,13 @@
+name: Matrix Demo
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.10, 3.12]
+    steps:
+      - name: Mostrar versión de Python
+        run: echo "Probando Python ${{ matrix.python-version }}"
