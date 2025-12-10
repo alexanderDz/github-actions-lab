@@ -1,0 +1,22 @@
+{
+  "name": "train_model",
+  "tasks": [
+    {
+      "task_key": "train",
+      "notebook_task": {
+        "notebook_path": "/Repos/<your_repo>/notebooks/01_dev_playground"
+      },
+      "job_cluster_key": "cluster1"
+    }
+  ],
+  "job_clusters": [
+    {
+      "job_cluster_key": "cluster1",
+      "new_cluster": {
+        "spark_version": "13.3.x-cpu-ml-scala2.12",
+        "num_workers": 1,
+        "node_type_id": "i3.xlarge"
+      }
+    }
+  ]
+}
