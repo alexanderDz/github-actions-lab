@@ -1,0 +1,40 @@
+experiment:
+  name: "ml_project_demo"
+  tracking_uri: "databricks"
+
+data:
+  source: "sklearn"           # ← NUEVO
+  name: "diabetes"            # o iris, wine, breast_cancer
+  validation_split: 0.2
+  test_split: 0.1
+  target_column: "label"
+
+features:
+  numeric:
+    - "age"
+    - "income"
+    - "balance"
+  categorical:
+    - "gender"
+    - "segment"
+
+model:
+  type: "RandomForestClassifier"
+  params:
+    n_estimators: 200
+    max_depth: 8
+    min_samples_split: 4
+    random_state: 42
+
+training:
+  log_model: true
+  register_model: true
+  model_registry_name: "demo_rf_model"
+
+paths:
+  artifacts_output: "dbfs:/mnt/artifacts/ml_project/"
+  model_local_tmp: "/tmp/model.pkl"
+
+inference:
+  batch_input: "dbfs:/mnt/data/raw/batch_predict.csv"
+  batch_output: "dbfs:/mnt/data/output/predictions.csv"
